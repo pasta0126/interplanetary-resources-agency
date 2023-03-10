@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Api", "Ira.Api\Ira.Api.csproj", "{ABE1EF4A-C1C9-44C6-B767-50820F0F8CEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Services", "Ira.Services\Ira.Services.csproj", "{58351270-7268-4881-B967-2183CC74669D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{ABE1EF4A-C1C9-44C6-B767-50820F0F8CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE1EF4A-C1C9-44C6-B767-50820F0F8CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE1EF4A-C1C9-44C6-B767-50820F0F8CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58351270-7268-4881-B967-2183CC74669D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58351270-7268-4881-B967-2183CC74669D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58351270-7268-4881-B967-2183CC74669D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58351270-7268-4881-B967-2183CC74669D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
