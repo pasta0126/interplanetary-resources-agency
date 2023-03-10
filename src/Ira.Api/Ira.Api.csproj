@@ -40,6 +40,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Ira.Repositories\Ira.Repositories.csproj" />
 	  <ProjectReference Include="..\Ira.Services\Ira.Services.csproj" />
 	</ItemGroup>
 

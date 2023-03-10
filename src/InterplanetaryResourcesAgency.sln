@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Services", "Ira.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Repositories", "Ira.Repositories\Ira.Repositories.csproj", "{C6DE8D9F-B5FA-4EA4-B525-57699940B418}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Models", "Ira.Models\Ira.Models.csproj", "{F404C78F-18EA-42E4-A733-BDF3A02A9C6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ira.Rmq", "Ira.Rmq\Ira.Rmq.csproj", "{3FABD782-7AAE-48DD-8C7E-2E4DD968E5FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{C6DE8D9F-B5FA-4EA4-B525-57699940B418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6DE8D9F-B5FA-4EA4-B525-57699940B418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6DE8D9F-B5FA-4EA4-B525-57699940B418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F404C78F-18EA-42E4-A733-BDF3A02A9C6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F404C78F-18EA-42E4-A733-BDF3A02A9C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F404C78F-18EA-42E4-A733-BDF3A02A9C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F404C78F-18EA-42E4-A733-BDF3A02A9C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FABD782-7AAE-48DD-8C7E-2E4DD968E5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FABD782-7AAE-48DD-8C7E-2E4DD968E5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FABD782-7AAE-48DD-8C7E-2E4DD968E5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FABD782-7AAE-48DD-8C7E-2E4DD968E5FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
