@@ -1,5 +1,6 @@
 using Ira.Api.Config;
 using Ira.Models.Config;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,9 @@ builder.Logging.ClearProviders();
 builder.Host.UseSerilog((hostContext, loggerConfiguration) =>
     loggerConfiguration.ReadFrom.Configuration(hostContext.Configuration));
 
-builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+builder.Services.Configure<EmailConfiguration>(
+    builder.Configuration.GetSection("EmailConfiguration"));
+
 
 AppConfiguration.ConfigureServices(builder.Services, config);
 
