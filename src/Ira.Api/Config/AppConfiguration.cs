@@ -1,22 +1,25 @@
 ﻿using Ira.Repositories;
 using Ira.Repositories.Context;
+using Ira.Repositories.Interfaces;
 using Ira.Services;
+using Ira.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ira.Api.Config
 {
     public static class AppConfiguration
     {
-        public static void ConfigureServices(IServiceCollection services, IConfigurationRoot configuration)
+        public static void ConfigureServices(IServiceCollection services, IConfigurationRoot config)
         {
             services.AddDbContext<IraContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("IraDBLocal")));
+                options.UseSqlServer(config.GetConnectionString("IraDBLocal")));
 
             // Repositories
-            services.AddScoped<MissionRepository, MissionRepository>();
+            services.AddScoped<IMissionRepository, MissionRepository>();
 
             // Services
-            services.AddScoped<MissionService, MissionService>();
+            services.AddScoped<IMissionService, MissionService>();
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         public static IConfigurationRoot GetConfiguration()
