@@ -8,6 +8,10 @@
 
 ![Interplanetary Resource Agency](./img/logo.png)
 
+![Route 001](./img/route001.png)
+
+![Route 002](./img/route002.png)
+
 [GitHub Repo](https://github.com/pasta0126/interplanetary-resources-agency)
 
 ## Introduction
