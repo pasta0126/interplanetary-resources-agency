@@ -19,5 +19,7 @@ namespace Ira.Models.Entities
         public Ship Ship { get; set; }
 
         public Route Route { get; set; }
+
+        public List<Notification> Notifications { get; set; }
     }
 }
