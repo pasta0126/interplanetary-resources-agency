@@ -29,19 +29,22 @@ namespace Ira.Services
         {
             var ship = _shipService.GetShip();
             var route = CreateRoute();
+            var id = Guid.NewGuid();
 
             var result = new Mission()
             {
-                Id = Guid.NewGuid(),
+                Id = id,
                 Name = Faker.Company.Industry(),
                 Description = Faker.Company.CatchPhrase(),
                 Labels = GetLabels(),
                 Ship = ship,
                 Route = route,
-                Notifications = _notificationService.CreateNotifications(ship.Crew, ship, route),
+                Notifications = _notificationService.CreateNotifications(id, ship.Crew, ship, route),
             };
 
             _repoMission.Insert(result);
+
+            _logger.LogInformation("Create Mission {id}", id);
 
             return result;
         }
@@ -62,7 +65,6 @@ namespace Ira.Services
 
             return result;
         }
-
 
         private Route CreateRoute()
         {

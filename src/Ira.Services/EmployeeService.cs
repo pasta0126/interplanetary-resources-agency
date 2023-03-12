@@ -29,7 +29,14 @@ namespace Ira.Services
         {
             var all = _repoEmployee.GetAll();
 
-            return all.Where(x => x.Position == position.ToString()).ToList();
+            var result = all.Where(x => x.Position == position.ToString()).ToList();
+            
+            var count = result.Count();
+            var pos = position.ToString();
+
+            _logger.LogInformation("Get {count} Employees with '{pos}'", count, pos);
+
+            return result;
         }
 
         public List<Employee> CreateEmployees(double quantity)
@@ -51,15 +58,19 @@ namespace Ira.Services
                     email = Faker.Internet.Email();
                 }
 
+                var id = Guid.NewGuid();
+
                 result.Add(new Employee()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = id,
                     AidCard = Faker.Company.SpanishOrganisationNumber(),
                     CompleteName = Faker.Name.Name(),
                     Description = Faker.Hipster.Sentence(),
                     Email = email,
                     Position = position.ToString(),
                 });
+
+                _logger.LogInformation("Create Employee {id}", id);
             }
 
             return result;

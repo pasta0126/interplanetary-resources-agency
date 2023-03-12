@@ -41,13 +41,17 @@ namespace Ira.Services
 
             for (int i = 0; i < quantity; i++)
             {
+                var id = Guid.NewGuid();
+
                 result.Add(new Ship()
                 {
-                    Id = Guid.NewGuid(),
+                    Id = id,
                     Description = Faker.Hipster.Sentence(),
                     Crew = CreateCrew(),
                     Type = Faker.Space.LaunchVehicle(),
                 });
+
+                _logger.LogInformation("Create Ship {id}", id);
             }
 
             _repoShip.InsertRange(result);

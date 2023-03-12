@@ -4,6 +4,6 @@ namespace Ira.Services.Interfaces
 {
     public interface INotificationService
     {
-        List<Notification> CreateNotifications(Crew crew, Ship ship, Route route);
+        List<Notification> CreateNotifications(Guid missionId, Crew crew, Ship ship, Route route);
     }
 }

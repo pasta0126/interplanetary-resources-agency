@@ -15,7 +15,7 @@ namespace Ira.Services
             _logger = logger;
         }
 
-        public List<Notification> CreateNotifications(Crew crew, Ship ship, Route route)
+        public List<Notification> CreateNotifications(Guid missionId, Crew crew, Ship ship, Route route)
         {
             var result = new List<Notification>();
 
@@ -27,11 +27,13 @@ namespace Ira.Services
                 {
                     Id = id,
                     Email = employee.Email,
-                    Subject = CreateSubject(id, ship, route),
+                    Subject = CreateSubject(missionId, ship, route),
                     Message = CreateMessage(route),
                     IsSentOk = false,
                     SentDate = null,
                 });
+
+                _logger.LogInformation("Create Notificartion {id}", id);
             });
 
             return result;

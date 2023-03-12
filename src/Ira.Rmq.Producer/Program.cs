@@ -39,11 +39,20 @@ while (true)
 {
     var dal = new Dal(_config);
     var notifications = dal.GetAllNotifications();
+    var count = notifications.Count();
+
+    logger.LogInformation("Get {count} Notifications", count);
 
     notifications.ForEach((notification) =>
     {
         SendToRmq(notification, _queueName);
+
+        var id = notification.Id;
+
+        logger.LogInformation("Send Notification {id} to RMQ", id);
     });
+
+    logger.LogInformation("Sleep for {_sleep} ms", _sleep);
 
     Thread.Sleep(_sleep);
 }
