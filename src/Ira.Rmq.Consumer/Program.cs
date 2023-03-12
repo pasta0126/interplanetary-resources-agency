@@ -1,4 +1,5 @@
 ﻿using Ira.Models.Dtos.Rmq;
+using Ira.Rmq.Consumer;
 using Ira.Services;
 using Ira.Services.Model;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,8 @@ var consumer = new EventingBasicConsumer(channel);
 
 consumer.Received += (model, ea) =>
 {
+    var dal = new Dal(_config);
+
     var body = ea.Body.ToArray();
     var json = Encoding.UTF8.GetString(body);
     var NotificationRmq = JsonConvert.DeserializeObject<NotificationRmq>(json);
