@@ -24,7 +24,7 @@ namespace Ira.Rmq.Producer
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    SqlCommand cmd = new SqlCommand("select * from Notification", con);
+                    SqlCommand cmd = new SqlCommand("select * from Notification where SentDate is null", con);
 
                     cmd.CommandType = CommandType.Text;
                     con.Open();
@@ -35,17 +35,17 @@ namespace Ira.Rmq.Producer
                     {
                         notifications.Add(new()
                         {
-                            //DepartmentID = rdr.GetInt16("DepartmentID"),
-                            //Name = rdr.GetString("Name"),
-                            //GroupName = rdr.GetString("GroupName"),
-                            //ModifiedDate = rdr.GetDateTime("ModifiedDate")
+                            Id = rdr.GetGuid("Id"),
+                            Email = rdr.GetString("Email"),
+                            Subject = rdr.GetString("Subject"),
+                            Message = rdr.GetString("Message"),
                         });
                     }
                 }
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
 
