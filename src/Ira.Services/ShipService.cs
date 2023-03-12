@@ -30,6 +30,11 @@ namespace Ira.Services
             return ships[Convert.ToInt32(i)];
         }
 
+        public List<Ship> GetShipList()
+        {
+            return _repoShip.GetAll();
+        }
+
         public List<Ship> CreateShip(int quantity)
         {
             var result = new List<Ship>();

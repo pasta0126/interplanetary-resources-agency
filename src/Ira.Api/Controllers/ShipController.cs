@@ -1,4 +1,5 @@
-﻿using Ira.Services.Interfaces;
+﻿using Ira.Models.Entities;
+using Ira.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ira.Api.Controllers
@@ -19,8 +20,17 @@ namespace Ira.Api.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public ActionResult<List<Ship>> GetAll()
+        {
+            var ships = _service.GetShipList();
+
+            return Ok(ships);
+        }
+
+
         [HttpPost]
-        public ActionResult CreateShip([FromQuery] int quantity)
+        public ActionResult<Ship> CreateShip([FromQuery] int quantity)
         {
             if (quantity <= 0)
             {
