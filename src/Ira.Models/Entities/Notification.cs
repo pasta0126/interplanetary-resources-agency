@@ -16,7 +16,7 @@ namespace Ira.Models.Entities
 
         public string Message { get; set; }
 
-        public DateTime SentDate { get; set; }
+        public DateTime? SentDate { get; set; }
 
         public bool IsSentOk { get; set; } = false;
     }

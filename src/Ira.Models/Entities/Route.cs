@@ -15,10 +15,10 @@ namespace Ira.Models.Entities
         public string Description { get; set; }
 
         [MaxLength(30)]
-        public string Origin { get; set; }
+        public Location Origin { get; set; }
 
         [MaxLength(30)]
-        public string Destination { get; set; }
+        public Location Destination { get; set; }
 
         [MaxLength(255)]
         public string CargoDescription { get; set; }

@@ -5,5 +5,8 @@
 		Pilot,
 		Captain,
 		Staff,
+		Mechanic,
+		Paramedic,
+		Other,
     }
 }

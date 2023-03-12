@@ -39,6 +39,12 @@ namespace Ira.Repositories
             _context.SaveChanges();
         }
 
+        public void InsertRange(List<T> entities)
+        {
+            _context.Set<T>().AddRange(entities);
+            _context.SaveChanges();
+        }
+
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
