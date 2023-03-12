@@ -1,6 +1,7 @@
 using Ira.Api.Config;
 using Ira.Models.Config;
-using Microsoft.Extensions.DependencyInjection;
+using Ira.Repositories.Context;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<IraContext>();
+    db.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {

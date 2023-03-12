@@ -9,6 +9,7 @@ namespace Ira.Repositories.Context
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Label> Label { get; set; }
         public DbSet<Mission> Mission { get; set; }
+        public DbSet<Notification> Notification { get; set; }
         public DbSet<Route> Route { get; set; }
         public DbSet<Ship> Ship { get; set; }
 

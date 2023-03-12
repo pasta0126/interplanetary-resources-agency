@@ -12,9 +12,19 @@
 
 This is a simple project, with a didactic purpose.
 
----
 
 ![Route 001](./img/route001.png)
+
+## Migrations
+
+```shell
+dotnet tool install --global dotnet-ef
+```
+
+```shell
+Add-Migration InitialMigration
+
+```
 
 ![Route 002](./img/route002.png)
 

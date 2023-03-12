@@ -2,7 +2,6 @@
 using Ira.Models.Dtos.Rmq;
 using Ira.Models.Entities;
 using Ira.Rmq.Producer;
-using Ira.Rmq.Producer.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
