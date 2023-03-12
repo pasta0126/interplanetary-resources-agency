@@ -1,6 +1,7 @@
-﻿using Ira.Models.Dtos.Rmq;
+﻿using Ira.Models.Config;
+using Ira.Models.Dtos.Rmq;
 using Ira.Rmq.Consumer;
-using Ira.Services;
+using Ira.Services.Interfaces;
 using Ira.Services.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,17 +16,19 @@ var _queueName = "Ira.Emails";
 var _config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", true, true).Build();
 
+var emailConfiguration = new EmailConfiguration();
+
+_config.Bind("EmailConfiguration", emailConfiguration);
+
 var serviceCollection = new ServiceCollection()
     .AddLogging(builder => builder
     .AddSerilog(
         new LoggerConfiguration()
         .ReadFrom.Configuration(_config)
-        .CreateLogger()))
+            .CreateLogger()))
     .BuildServiceProvider();
 
 var logger = serviceCollection.GetRequiredService<ILogger<Program>>();
-
-var emailService = serviceCollection.GetService<EmailService>();
 
 var factory = new ConnectionFactory { HostName = "localhost" };
 
@@ -52,7 +55,10 @@ consumer.Received += (model, ea) =>
         subject: NotificationRmq.Subject,
         content: NotificationRmq.Message);
 
-    emailService.SendEmail(message);
+    var sendNotification = new SendNotification(emailConfiguration, logger);
+
+    sendNotification.SendEmail(message);
+    dal.UpdateNotification(NotificationRmq.Id);
 };
 
 channel.BasicConsume(queue: _queueName,

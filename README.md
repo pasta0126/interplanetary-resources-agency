@@ -8,12 +8,21 @@
 
 ![Interplanetary Resource Agency](./img/logo.png "Interplanetary Resource Agency")
 
+[GitHub Repo](https://github.com/pasta0126/interplanetary-resources-agency)
+
 ## Introduction
 
 This is a simple project, with a didactic purpose.
 
 
 ![Route 001](./img/route001.png)
+
+## User secret
+
+```shell
+dotnet user-secrets init
+```
+![Route 002](./img/route002.png)
 
 ## Migrations
 
@@ -25,7 +34,3 @@ dotnet tool install --global dotnet-ef
 Add-Migration InitialMigration
 
 ```
-
-![Route 002](./img/route002.png)
-
-[GitHub Repo](https://github.com/pasta0126/interplanetary-resources-agency)
