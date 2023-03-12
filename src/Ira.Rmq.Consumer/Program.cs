@@ -51,6 +51,7 @@ consumer.Received += (model, ea) =>
     var json = Encoding.UTF8.GetString(body);
     var NotificationRmq = JsonConvert.DeserializeObject<NotificationRmq>(json);
     var id = NotificationRmq.Id;
+    var to = NotificationRmq.Email;
 
     logger.LogInformation("Received Notification {id} from RMQ", id);
 
@@ -64,7 +65,7 @@ consumer.Received += (model, ea) =>
     sendNotification.SendEmail(message);
     dal.UpdateNotification(NotificationRmq.Id);
 
-    logger.LogInformation("Notification {id} sent successfully", id);
+    logger.LogInformation("Notification {id} sent successfully to {to}", id, to);
 };
 
 channel.BasicConsume(queue: _queueName,
