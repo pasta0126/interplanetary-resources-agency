@@ -39,7 +39,7 @@ namespace Ira.Services
 
         private string CreateSubject(Guid id, Ship ship, Route route)
         {
-            return $"IRA Mission {id} for {ship.Name} from {route.Origin.Planet} to {route.Destination.Planet}";
+            return $"IRA Mission {id} from {route.Origin.Planet} to {route.Destination.Planet}";
         }
 
         private string CreateMessage(Route route)

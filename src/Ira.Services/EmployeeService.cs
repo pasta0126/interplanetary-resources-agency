@@ -38,14 +38,27 @@ namespace Ira.Services
 
             for (int i = 0; i < quantity; i++)
             {
+                var position = GetPosition(i);
+                var email = Faker.Internet.FreeEmail();
+
+                if (position == EmployeePosition.Captain)
+                {
+                    email = Faker.Internet.SafeEmail();
+                }
+
+                if (position == EmployeePosition.Pilot)
+                {
+                    email = Faker.Internet.Email();
+                }
+
                 result.Add(new Employee()
                 {
                     Id = Guid.NewGuid(),
                     AidCard = Faker.Company.SpanishOrganisationNumber(),
                     CompleteName = Faker.Name.Name(),
-                    Description = Faker.ChuckNorris.Fact(),
-                    Email = Faker.Internet.Email(),
-                    Position = GetPosition(i).ToString(),
+                    Description = Faker.StarWars.Quote(),
+                    Email = email,
+                    Position = position.ToString(),
                 });
             }
 

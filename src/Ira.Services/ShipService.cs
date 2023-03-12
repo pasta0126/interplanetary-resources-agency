@@ -41,8 +41,7 @@ namespace Ira.Services
                     Id = Guid.NewGuid(),
                     Description = Faker.Hipster.Sentence(),
                     Crew = CreateCrew(),
-                    Name = Faker.Space.LaunchVehicle(),
-                    Type = Faker.StarWars.Vehicle(),
+                    Type = Faker.Space.LaunchVehicle(),
                 });
             }
 
