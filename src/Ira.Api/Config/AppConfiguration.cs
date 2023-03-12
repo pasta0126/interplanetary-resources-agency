@@ -18,11 +18,14 @@ namespace Ira.Api.Config
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IShipRepository, ShipRepository>();
             services.AddScoped<IMissionRepository, MissionRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             // Services
-            services.AddScoped<IMissionService, MissionService>();
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IFakeService, FakeService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IMissionService, MissionService>();
+            services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<IShipService, ShipService>();
         }
 
         public static IConfigurationRoot GetConfiguration()

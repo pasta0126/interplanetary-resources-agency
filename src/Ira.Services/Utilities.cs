@@ -12,5 +12,18 @@ namespace Ira.Services
 
             return element;
         }
+
+        public static List<string> GetEnumValues<T>()
+        {
+            var result = new List<string>();
+            var list =  Enum.GetValues(typeof(T)).Cast<T>();
+
+            foreach ( var value in list)
+            {
+                result.Add(value.ToString());
+            }
+
+            return result;
+        }
     }
 }

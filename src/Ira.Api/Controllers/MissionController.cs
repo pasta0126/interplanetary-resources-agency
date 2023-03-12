@@ -1,4 +1,4 @@
-﻿using Ira.Api.Models.Dto;
+﻿using Ira.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ira.Api.Controllers
@@ -9,17 +9,22 @@ namespace Ira.Api.Controllers
     public class MissionController : ControllerBase
     {
         private readonly ILogger<MissionController> _logger;
+        private readonly IMissionService _fakeService;
 
         public MissionController(
-            ILogger<MissionController> logger)
+            ILogger<MissionController> logger,
+            IMissionService fakeService)
         {
             _logger = logger;
+            _fakeService = fakeService;
         }
 
         [HttpPost]
-        public ActionResult PostMission(MissionPostRequest request)
+        public ActionResult Post()
         {
-            return Ok();
+            var ships = _fakeService.CreateMission();
+
+            return Ok(ships);
         }
     }
 }
