@@ -2,6 +2,7 @@
 using Ira.Models.Entities;
 using Ira.Models.Enums;
 using Ira.Repositories;
+using Ira.Repositories.Interfaces;
 using Ira.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -11,13 +12,13 @@ namespace Ira.Services
     public class FakeService : IFakeService
     {
         private readonly ILogger<FakeService> _logger;
-        private readonly GenericRepository<Ship> _repoShip;
-        private readonly GenericRepository<Mission> _repoMission;
+        private readonly IShipRepository _repoShip;
+        private readonly IMissionRepository _repoMission;
 
         public FakeService(
             ILogger<FakeService> logger,
-            GenericRepository<Ship> repoShip,
-            GenericRepository<Mission> repoMission)
+            IShipRepository repoShip,
+            IMissionRepository repoMission)
         {
             _logger = logger;
             _repoShip = repoShip;

@@ -16,6 +16,8 @@ namespace Ira.Api.Config
 
             // Repositories
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IShipRepository, ShipRepository>();
+            services.AddScoped<IMissionRepository, MissionRepository>();
 
             // Services
             services.AddScoped<IMissionService, MissionService>();
