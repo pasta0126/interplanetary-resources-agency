@@ -1,5 +1,4 @@
 ﻿using Ira.Models.Dtos.Rmq;
-using Ira.Models.Entities;
 using Ira.Services;
 using Ira.Services.Model;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +8,6 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Serilog;
-using System.Globalization;
 using System.Text;
 
 var _queueName = "Ira.Emails";
@@ -32,7 +30,6 @@ var factory = new ConnectionFactory { HostName = "localhost" };
 
 using var connection = factory.CreateConnection();
 using var channel = connection.CreateModel();
-
 
 channel.QueueDeclare(queue: _queueName,
                      durable: false,
@@ -58,4 +55,3 @@ consumer.Received += (model, ea) =>
 channel.BasicConsume(queue: _queueName,
                      autoAck: true,
                      consumer: consumer);
-
