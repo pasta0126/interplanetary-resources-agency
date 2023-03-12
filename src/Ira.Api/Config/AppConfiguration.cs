@@ -15,11 +15,12 @@ namespace Ira.Api.Config
                 options.UseSqlServer(config.GetConnectionString("IraDBLocal")));
 
             // Repositories
-            services.AddScoped<IMissionRepository, MissionRepository>();
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             // Services
             services.AddScoped<IMissionService, MissionService>();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IFakeService, FakeService>();
         }
 
         public static IConfigurationRoot GetConfiguration()
