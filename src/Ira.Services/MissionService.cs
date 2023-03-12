@@ -88,11 +88,6 @@ namespace Ira.Services
                 Galaxy = Faker.Space.Galaxy(),
                 Planet = Faker.Space.Planet(),
                 Comments = Faker.RickAndMorty.Location(),
-                A = Convert.ToDecimal(Faker.Compass.Azimuth()),
-                CA = Convert.ToDecimal(Faker.Compass.Azimuth()),
-                OA = Convert.ToDecimal(Faker.Compass.Azimuth()),
-                HwA = Convert.ToDecimal(Faker.Compass.Azimuth()),
-                QwA = Convert.ToDecimal(Faker.Compass.Azimuth()),
             };
         }
     }

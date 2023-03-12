@@ -22,11 +22,5 @@ namespace Ira.Models.Entities
 
         [MaxLength(30)]
         public string Comments { get; set; }
-
-        public decimal A { get; set; }
-        public decimal CA { get; set; }
-        public decimal OA { get; set; }
-        public decimal HwA { get; set; }
-        public decimal QwA { get; set; }
     }
 }

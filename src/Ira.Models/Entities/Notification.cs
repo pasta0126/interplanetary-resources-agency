@@ -11,7 +11,7 @@ namespace Ira.Models.Entities
         [MaxLength(150)]
         public string Email { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(150)]
         public string Subject { get; set; }
 
         public string Message { get; set; }

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Ira.Services
 {
-    public class NotificationService: INotificationService
+    public class NotificationService : INotificationService
     {
         private readonly ILogger<NotificationService> _logger;
 
@@ -39,7 +39,7 @@ namespace Ira.Services
 
         private string CreateSubject(Guid id, Ship ship, Route route)
         {
-            return $"IRA Mission {id} from {route.Origin.Planet} to {route.Destination.Planet}";
+            return $"IRA Mission {id.ToString().Split('-')[0]} from {route.Origin.Planet} to {route.Destination.Planet}";
         }
 
         private string CreateMessage(Route route)

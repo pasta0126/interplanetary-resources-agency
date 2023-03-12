@@ -25,7 +25,7 @@ namespace Ira.Services
         public Ship GetShip()
         {
             var ships = _repoShip.GetAll();
-            var i = Faker.Number.Between(0, ships.Count);
+            var i = Faker.Number.Between(0, ships.Count - 1);
 
             return ships[Convert.ToInt32(i)];
         }
