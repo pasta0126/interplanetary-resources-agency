@@ -25,20 +25,19 @@ namespace Ira.Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Route",
+                name: "Location",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    Origin = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Destination = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    CargoDescription = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    CargoValue = table.Column<double>(type: "float", nullable: false)
+                    Cluster = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Nebula = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Galaxy = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Planet = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Comments = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Route", x => x.Id);
+                    table.PrimaryKey("PK_Location", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,7 +67,6 @@ namespace Ira.Repositories.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Type = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     CrewId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
@@ -80,6 +78,33 @@ namespace Ira.Repositories.Migrations
                         name: "FK_Ship_Crew_CrewId",
                         column: x => x.CrewId,
                         principalTable: "Crew",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Route",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    OriginId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    DestinationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CargoDescription = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
+                    CargoValue = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Route", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Route_Location_DestinationId",
+                        column: x => x.DestinationId,
+                        principalTable: "Location",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Route_Location_OriginId",
+                        column: x => x.OriginId,
+                        principalTable: "Location",
                         principalColumn: "Id");
                 });
 
@@ -132,9 +157,9 @@ namespace Ira.Repositories.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
-                    Subject = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Subject = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SentDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsSentOk = table.Column<bool>(type: "bit", nullable: false),
                     MissionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
@@ -174,6 +199,16 @@ namespace Ira.Repositories.Migrations
                 column: "MissionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Route_DestinationId",
+                table: "Route",
+                column: "DestinationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Route_OriginId",
+                table: "Route",
+                column: "OriginId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ship_CrewId",
                 table: "Ship",
                 column: "CrewId");
@@ -199,6 +234,9 @@ namespace Ira.Repositories.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ship");
+
+            migrationBuilder.DropTable(
+                name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Crew");

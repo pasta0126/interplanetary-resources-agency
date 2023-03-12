@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ira.Repositories.Migrations
 {
     [DbContext(typeof(IraContext))]
-    [Migration("20230312212249_RemoveLocation")]
-    partial class RemoveLocation
+    [Migration("20230312224555_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,8 +180,8 @@ namespace Ira.Repositories.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Subject")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
