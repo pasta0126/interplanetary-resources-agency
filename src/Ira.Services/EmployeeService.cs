@@ -56,7 +56,7 @@ namespace Ira.Services
                     Id = Guid.NewGuid(),
                     AidCard = Faker.Company.SpanishOrganisationNumber(),
                     CompleteName = Faker.Name.Name(),
-                    Description = Faker.StarWars.Quote(),
+                    Description = Faker.Hipster.Sentence(),
                     Email = email,
                     Position = position.ToString(),
                 });

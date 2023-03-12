@@ -7,7 +7,7 @@ namespace Ira.Services
         public static T RandomFromEnum<T>()
         {
             Array values = Enum.GetValues(typeof(T));
-            var random = Faker.Number.Between(0, values.Length);
+            var random = Faker.Number.Between(0, values.Length - 1);
             T element = (T)values.GetValue(Convert.ToInt32(random));
 
             return element;
@@ -16,9 +16,9 @@ namespace Ira.Services
         public static List<string> GetEnumValues<T>()
         {
             var result = new List<string>();
-            var list =  Enum.GetValues(typeof(T)).Cast<T>();
+            var list = Enum.GetValues(typeof(T)).Cast<T>();
 
-            foreach ( var value in list)
+            foreach (var value in list)
             {
                 result.Add(value.ToString());
             }
