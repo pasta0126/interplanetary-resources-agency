@@ -53,7 +53,6 @@ consumer.Received += (model, ea) =>
         content: NotificationRmq.Message);
 
     emailService.SendEmail(message);
-
 };
 
 channel.BasicConsume(queue: _queueName,
