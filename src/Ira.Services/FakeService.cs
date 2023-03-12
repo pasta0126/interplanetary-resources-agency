@@ -89,7 +89,6 @@ namespace Ira.Services
         public Mission CreateMission()
         {
             var ship = GetShip();
-            var subject = Faker.Company.CatchPhrase();
             var route = CreateRoute();
 
             var result = new Mission()
@@ -100,7 +99,7 @@ namespace Ira.Services
                 Labels = GetLabels(),
                 Ship = ship,
                 Route = route,
-                Notifications = CreateNotifications(ship.Crew, subject, route),
+                Notifications = CreateNotifications(ship.Crew, ship, route),
             };
 
             _repoMission.Insert(result);
