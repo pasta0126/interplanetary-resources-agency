@@ -1,4 +1,4 @@
-﻿namespace Ira.Rmq.Producer.Model
+﻿namespace Ira.Models.Dtos.Rmq
 {
     public class NotificationRmq
     {

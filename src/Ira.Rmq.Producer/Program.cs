@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Ira.Models.Dtos.Rmq;
 using Ira.Models.Entities;
 using Ira.Rmq.Producer;
 using Ira.Rmq.Producer.Model;
