@@ -8,12 +8,13 @@ namespace Ira.Models.Entities
         [Key]
         public Guid Id { get; set; }
 
-        public string Message { get; set; }
-
         [MaxLength(150)]
         public string Email { get; set; }
 
-        public string Phone { get; set; }
+        [MaxLength(50)]
+        public string Subject { get; set; }
+
+        public string Message { get; set; }
 
         public DateTime SentDate { get; set; }
 
