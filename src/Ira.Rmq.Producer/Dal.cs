@@ -22,25 +22,23 @@ namespace Ira.Rmq.Producer
 
             try
             {
-                using (SqlConnection con = new SqlConnection(_connectionString))
+                using SqlConnection con = new(_connectionString);
+                SqlCommand cmd = new("select * from Notification where SentDate is null", con);
+
+                cmd.CommandType = CommandType.Text;
+                con.Open();
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
                 {
-                    SqlCommand cmd = new SqlCommand("select * from Notification where SentDate is null", con);
-
-                    cmd.CommandType = CommandType.Text;
-                    con.Open();
-
-                    SqlDataReader rdr = cmd.ExecuteReader();
-
-                    while (rdr.Read())
+                    notifications.Add(new()
                     {
-                        notifications.Add(new()
-                        {
-                            Id = rdr.GetGuid("Id"),
-                            Email = rdr.GetString("Email"),
-                            Subject = rdr.GetString("Subject"),
-                            Message = rdr.GetString("Message"),
-                        });
-                    }
+                        Id = rdr.GetGuid("Id"),
+                        Email = rdr.GetString("Email"),
+                        Subject = rdr.GetString("Subject"),
+                        Message = rdr.GetString("Message"),
+                    });
                 }
             }
             catch (Exception ex)
