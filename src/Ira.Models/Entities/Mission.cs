@@ -8,7 +8,7 @@ namespace Ira.Models.Entities
         [Key]
         public Guid Id { get; set; }
 
-        [MaxLength(30)]
+        [MaxLength(150)]
         public string Name { get; set; }
 
         [MaxLength(255)]
