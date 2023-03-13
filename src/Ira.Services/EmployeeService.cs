@@ -30,7 +30,7 @@ namespace Ira.Services
             var all = _repoEmployee.GetAll();
 
             var result = all.Where(x => x.Position == position.ToString()).ToList();
-            
+
             var count = result.Count();
             var pos = position.ToString();
 
@@ -47,14 +47,17 @@ namespace Ira.Services
             {
                 var position = GetPosition(i);
                 var id = Guid.NewGuid();
+                var name = Faker.Name.Name();
+                var eName = name.Split(' ');
+                var email = $"{string.Join('.', eName)}@example.com";
 
                 result.Add(new Employee()
                 {
                     Id = id,
                     AidCard = Faker.Company.SpanishOrganisationNumber(),
-                    CompleteName = Faker.Name.Name(),
+                    CompleteName = name,
                     Description = Faker.Hipster.Sentence(),
-                    Email = Faker.Internet.SafeEmail(),
+                    Email = email,
                     Position = position.ToString(),
                 });
 

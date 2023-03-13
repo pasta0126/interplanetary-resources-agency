@@ -62,10 +62,13 @@ consumer.Received += (model, ea) =>
 
     var sendNotification = new SendNotification(emailConfiguration, logger);
 
-    sendNotification.SendEmail(message);
-    dal.UpdateNotification(NotificationRmq.Id);
+    if (!to.Contains("example"))
+    {
+        sendNotification.SendEmail(message);
+        logger.LogInformation("Notification {id} sent successfully to {to}", id, to);
+    }
 
-    logger.LogInformation("Notification {id} sent successfully to {to}", id, to);
+    dal.UpdateNotification(NotificationRmq.Id);
 };
 
 channel.BasicConsume(queue: _queueName,
