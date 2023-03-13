@@ -58,7 +58,9 @@ namespace Ira.Services
                 $"----------------------------------\n" +
                 $"Destination:\n" +
                 $"{JsonConvert.SerializeObject(route.Destination)}\n" +
-                $"";
+                $"\n" +
+                $"\n" +
+                $"This is a demo email for educational purposes.\n";
         }
     }
 }
