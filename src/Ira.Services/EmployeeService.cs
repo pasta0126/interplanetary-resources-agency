@@ -46,18 +46,6 @@ namespace Ira.Services
             for (int i = 0; i < quantity; i++)
             {
                 var position = GetPosition(i);
-                var email = Faker.Internet.FreeEmail();
-
-                if (position == EmployeePosition.Captain)
-                {
-                    email = Faker.Internet.SafeEmail();
-                }
-
-                if (position == EmployeePosition.Pilot)
-                {
-                    email = Faker.Internet.Email();
-                }
-
                 var id = Guid.NewGuid();
 
                 result.Add(new Employee()
@@ -66,7 +54,7 @@ namespace Ira.Services
                     AidCard = Faker.Company.SpanishOrganisationNumber(),
                     CompleteName = Faker.Name.Name(),
                     Description = Faker.Hipster.Sentence(),
-                    Email = email,
+                    Email = Faker.Internet.SafeEmail(),
                     Position = position.ToString(),
                 });
 
