@@ -57,7 +57,7 @@ namespace Ira.Services
                 $"{JsonConvert.SerializeObject(route.Origin)}\n" +
                 $"----------------------------------\n" +
                 $"Destination:\n" +
-                $"{JsonConvert.SerializeObject(route.Description)}\n" +
+                $"{JsonConvert.SerializeObject(route.Destination)}\n" +
                 $"";
         }
     }
