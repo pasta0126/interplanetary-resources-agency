@@ -28,15 +28,17 @@ Optional requirements:
 - Visual Studio Code
 - MS SQL Server Management Studio
 
-## User secret
+## Project configuration
+
+This project uses `User Secrets`, to manage sensitive environment configuration data, and `EF Migrations`, to admin and control changes in ddbb
+
+### User secret
 
 ```shell
 dotnet user-secrets init
 ```
 
-![Route 002](./img/route002.png)
-
-## Migrations
+### Migrations
 
 ```shell
 dotnet tool install --global dotnet-ef
@@ -44,5 +46,30 @@ dotnet tool install --global dotnet-ef
 
 ```shell
 Add-Migration InitialMigration
+```
 
+![Route 002](./img/route002.png)
+
+## Start up
+
+### Docker environment
+
+Run de docker to start the `MS SQL Server` and `RMQ`
+
+```shell
+docker-compose up -d
+```
+
+### .Net applications
+
+1. Run de `Ira.Api`
+2. Run de `Ira.Rmq.Producer`
+3. Run de `Ira.Rmq.Consumer`
+
+Can run from console or from `IDE`
+
+To run from the console:
+
+```shell
+dotnet run <project>
 ```
