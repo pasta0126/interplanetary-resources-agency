@@ -74,6 +74,8 @@ To run from the console:
 dotnet run <project>
 ````
 
+## Diagram
+
 ```mermaid
 sequenceDiagram
     participant API
