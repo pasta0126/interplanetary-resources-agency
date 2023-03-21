@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using Serilog;
 
-var _sleep = 60000; // millis
+var _sleep = 20000; // millis
 var _queueName = "Ira.Emails";
 var _config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", true, true).Build();

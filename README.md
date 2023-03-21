@@ -72,4 +72,26 @@ To run from the console:
 
 ```shell
 dotnet run <project>
+````
+
+```mermaid
+sequenceDiagram
+    participant API
+    participant Producer
+    box grey Docker
+    participant DDBB
+    participant RMQ
+    end
+    participant Consumer
+    actor Notification
+
+    API ->> DDBB: Insert notification
+    Producer -> DDBB: Read unsent notifications
+    Producer ->> RMQ: Publish into notification queue
+    loop Event trigger
+        Consumer -> RMQ: Read notifications from queue
+        Consumer -->> Notification: Send notification
+            Note over Notification: Email
+        Consumer -->> DDBB: Update notiofication status
+    end
 ```

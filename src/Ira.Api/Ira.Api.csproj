@@ -45,4 +45,8 @@
 	  <ProjectReference Include="..\Ira.Services\Ira.Services.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="logs\" />
+	</ItemGroup>
+
 </Project>
